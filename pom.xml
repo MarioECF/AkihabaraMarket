@@ -1,48 +1,61 @@
+<!-- Declaración del proyecto Maven -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <!-- Versión del modelo de POM (no cambiar) -->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ve.ecoleite.akihabara</groupId>
-    <artifactId>AkihabaraMarket</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
-    <name>Akihabara Market</name>
+    <!-- Datos del proyecto -->
+    <groupId>com.mario.akihabara</groupId>       <!-- Dominio inverso del proyecto -->
+    <artifactId>AkihabaraMarket</artifactId>     <!-- Nombre del artefacto (JAR) -->
+    <version>1.0.0</version>                      <!-- Versión de tu app -->
+    <packaging>jar</packaging>                   <!-- Tipo de empaquetado -->
+    <name>Akihabara Market</name>                <!-- Nombre legible del proyecto -->
 
+    <!-- Heredas de Spring Boot: simplifica configuración y versiones -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version> <!-- Puedes cambiar la versión si quieres -->
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.2.5</version>                 <!-- Última estable al momento -->
+        <relativePath/>                          <!-- Busca el parent desde repositorio -->
     </parent>
 
+    <!-- Propiedades globales -->
     <properties>
-        <java.version>17</java.version> <!-- Cambia a 21 si usas Java 21 -->
+        <java.version>17</java.version>          <!-- Versión mínima de Java que usarás -->
     </properties>
 
+    <!-- Dependencias del proyecto -->
     <dependencies>
-        <!-- Web -->
+        <!-- Starter principal de Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <!-- Spring Web: para crear controladores REST -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- JPA -->
+        <!-- Spring Data JPA: ORM para manejar base de datos con entidades -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Base de datos H2 -->
+        <!-- H2 Database: base de datos en memoria para pruebas -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Lombok -->
+        <!-- Lombok: genera getters, setters y constructores automáticamente -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -50,31 +63,45 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- DevTools -->
+        <!-- DevTools: recarga automática del backend en desarrollo -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Swagger -->
+        <!-- Swagger UI con SpringDoc: documentación automática de tu API REST -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.2.0</version>
         </dependency>
-        <!-- Validación -->
+
+        <!-- Spring Boot Starter (core): necesario para usar @Configuration, @Bean, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Validación de entradas con @Valid, @NotBlank, etc. -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.0.Final</version>
         </dependency>
+
+        <!-- Spring Security: para proteger rutas y permitir acceso a H2 con config extra -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
-
+    <!-- Configuración del build de Maven -->
     <build>
         <plugins>
-            <!-- Spring Boot plugin -->
+            <!-- Plugin de Spring Boot: permite ejecutar y empaquetar la app -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
