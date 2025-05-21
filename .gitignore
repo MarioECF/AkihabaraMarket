@@ -36,3 +36,16 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+.idea/
+*.iml
+/target/
+*.log
+*.class
+.DS_Store
+
+*.tar
+*.jar
+target/
+.idea/
+
