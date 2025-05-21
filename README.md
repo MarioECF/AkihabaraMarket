@@ -77,6 +77,16 @@ bash:
 docker run -p 8080:8080 akihabara-market
 docker run -d --name mario-kun -p 8080:8080 akihabara-market
 
+Desde docker con imagen tar:
+docker save -o akihabara-market.tar akihabara-market
+
+docker load -i akihabara-market.tar
+
+docker run --name mario-kun -p 8080:8080 akihabara-market
+
+docker start mario-kun
+
+
 
 🌐 Acceso
 Swagger UI: http://localhost:8080/swagger-ui.html
