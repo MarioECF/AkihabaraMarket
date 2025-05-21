@@ -1,5 +1,7 @@
 package com.akihabara.market.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +13,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductoOtaku {
-
+    @Schema(description = "ID generado automáticamente", accessMode = Schema.AccessMode.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
