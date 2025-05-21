@@ -14,7 +14,6 @@ Este proyecto fue creado como reto para ayudar al Maestro Tanaka a modernizar su
 - Spring Web
 - H2 Database (en memoria)
 - Swagger (OpenAPI)
-- Spring Security (configuración básica para permitir consola H2)
 - Docker (para ejecución en contenedor)
 
 ---
