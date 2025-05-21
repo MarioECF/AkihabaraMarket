@@ -29,12 +29,6 @@
 
     <!-- Dependencias del proyecto -->
     <dependencies>
-        <!-- Starter principal de Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
 
         <!-- Spring Web: para crear controladores REST -->
         <dependency>

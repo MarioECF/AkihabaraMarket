@@ -1,5 +1,5 @@
 package com.akihabara.market;
-import java.lang.Exception; // agrégalo manualmente
+import java.lang.Exception;
 
 
 import org.springframework.context.annotation.Bean;
