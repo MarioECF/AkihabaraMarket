@@ -1,17 +1,12 @@
-# Imagen base: Java 17 con Alpine Linux
-FROM eclipse-temurin:17-jdk-alpine
-
-# Autor de la imagen (opcional)
-LABEL author="mario"
-
-# Directorio de trabajo dentro del contenedor
+# Etapa 1: Compilar el proyecto con Maven
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copiar el JAR generado al contenedor
-COPY target/AkihabaraMarket-1.0.0.jar app.jar
-
-# Exponer el puerto 8080 para que el contenedor lo abra
+# Etapa 2: Imagen liviana para producción
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/AkihabaraMarket-1.0.0.jar app.jar
 EXPOSE 8080
-
-# Comando que se ejecuta al iniciar el contenedor
 ENTRYPOINT ["java", "-jar", "app.jar"]
